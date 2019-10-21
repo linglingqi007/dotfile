@@ -1,0 +1,5 @@
+[user]
+	email = if.true.else@gmail.com
+	name = tiger
+[core]
+	excludesfile = /home/tiger/.gitignore
