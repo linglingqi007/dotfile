@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
 """""""""""""""""""""""""""""""" markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 """""""""""""""""""""""""""""""""" web
@@ -277,9 +278,15 @@ let NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
 let NERDTreeQuitOnOpen = 3
 let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeWinSize = 41
 
 map <Leader>nt :NERDTreeFocus<CR>
 map <Leader>j :NERDTreeFind<CR>
+
+"""""""""""""""""""""""""""""""" tagbar
+let g:tagbar_width = 41
+
+map <Leader>t :TagbarOpenAutoClose<CR>
 
 """""""""""""""""""""""""" ack.vim
 let g:ackprg = 'ag --vimgrep'
