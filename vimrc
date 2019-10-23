@@ -84,7 +84,7 @@ set scl=yes
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)\c')
 
 """"""""""""""""""""""""""""""""""""""""""""" map 
-let mapleader = ","
+let mapleader = ','
 map <Leader>e :vsplit ~/.vimrc<CR>
 map <Leader>r :source ~/.vimrc<CR>
 " Find merge conflict markers
@@ -262,9 +262,9 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
 """""""""""""""""""""""""" ultisnips
-let g:UltiSnipsExpandTrigger="<C-f>"
-let g:UltiSnipsJumpForwardTrigger="<C-f>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsExpandTrigger = '<C-f>'
+let g:UltiSnipsJumpForwardTrigger = '<C-f>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
 """""""""""""""""""""""""""""""" markdown-preview.nvim
 let g:mkdp_open_ip = '192.168.56.77'
@@ -349,7 +349,8 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_echo_current_diagnostic = 0
-let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
+let g:ycm_key_list_stop_completion = ['<Enter>']
+
 """""""""""""""""""""" python
 let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
@@ -380,15 +381,15 @@ let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_space_tab_error = 1
 let g:go_highlight_trailing_whitespace_error = 1
-let g:go_test_timeout = "10s"
+let g:go_test_timeout = '10s'
 let g:go_info_mode = 'gopls'
 let g:go_auto_sameids = 1
 let g:go_updatetime = 100
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
 let g:go_def_mode = 'gopls'
-let g:go_snippet_engine = "ultisnips"
-let g:go_metalinter_deadline = "5s"
+let g:go_snippet_engine = 'ultisnips'
+let g:go_metalinter_deadline = '5s'
 let g:go_decls_mode = 'fzf'
 " let g:go_debug = ['shell-commands']
 let g:go_debug_windows = {
