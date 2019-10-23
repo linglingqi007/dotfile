@@ -310,20 +310,35 @@ xmap <Leader>gS <plug>(scratch-selection-clear)
 """""""""""""""""""""""""""" ale
 let g:ale_sign_warning = "\uf071"
 let g:ale_sign_error = "\uf05e"
+let g:ale_echo_msg_format='[%linter%] %s [%severity%]'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
+let g:ale_linter_aliases = {
+\   'vue': ['vue', 'javascript'],
+\}
 let g:ale_linters = {
+\   'python': ['pylint'],
 \   'go': ['golint', 'gopls'],
 \   'javascript': ['eslint'],
-\   'python': ['pylint'],
+\   'html': ['alex'],
+\   'json': ['jsonlint'],
+\   'yaml': ['yamllint'],
+\   'vim': ['vint'],
+\   'ansible': ['ansible-lint'],
+\   'vue': ['eslint', 'vls'],
 \}
 
 let g:ale_fixers = {
+\   'python': ['autopep8', 'reorder-python-imports'],
 \   'javascript': ['eslint'],
+\   'html': ['prettier'],
+\   'json': ['prettier'],
+\   'yaml': ['prettier'],
 \   'css': ['prettier'],
-\   'python': ['autopep8'],
+\   'markdown': ['prettier'],
+\   'vue': ['eslint'],
 \}
 
 """"""""""""""""""""""" YouCompleteMe

@@ -125,4 +125,4 @@ export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
 export EDITOR='vim'
 export GOPATH=$HOME/go
-export PATH=$HOME/.bin:$HOME/.local/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.local/bin:$HOME/.yarn/bin:$GOPATH/bin:$PATH
