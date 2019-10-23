@@ -1,5 +1,6 @@
 """""""""""""""""""""""" .vimrc
 call plug#begin('~/.vim/plugged')
+Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
@@ -13,7 +14,6 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-complet
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mtth/scratch.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'SirVer/ultisnips'
@@ -349,7 +349,7 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_echo_current_diagnostic = 0
-let g:ycm_key_list_stop_completion = ['<Enter>']
+let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 
 """""""""""""""""""""" python
 let g:ycm_python_interpreter_path = ''
