@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tiger/.oh-my-zsh"
+export ZSH="/Users/tiger/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,30 +99,56 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ### Added by Zplugin's installer
-source '/home/tiger/.zplugin/bin/zplugin.zsh'
+source "$HOME/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
-
+### End of Zplugin installer's chunk
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zdharma/fast-syntax-highlighting
-zplugin ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
-zplugin light trapd00r/LS_COLORS
+zplugin ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh"
+zplugin load trapd00r/LS_COLORS
 
-# load alias
-if [ -d "$HOME/.alias" ]; then
-    for i in $(ls -1 "$HOME/.alias"); do
-	if [ -f "$HOME/.alias/$i" ]; then
-	    source "$HOME/.alias/$i"
-	fi
-    done
-fi
-
+# set vim mode
 set -o vi
+
+# set alias
+for file in $(ls -1 "${HOME}/.alias"); do
+    if [ -f "$HOME/.alias/$file" ]; then
+        . "$HOME/.alias/$file"
+    fi
+done
+
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
-export EDITOR='vim'
+# brew
+export HOMEBREW_NO_AUTO_UPDATE="1"
+
+# go
 export GOPATH=$HOME/go
-export PATH=$HOME/.bin:$HOME/.local/bin:$HOME/.yarn/bin:$GOPATH/bin:$PATH
+
+# basic
+export LC_ALL=en_US.UTF-8
+export EDITOR="vim"
+export LDFLAGS="-L/usr/local/opt/curl/lib"
+export CPPFLAGS="-I/usr/local/opt/curl/include"
+
+# path
+export PATH="$HOME/.bin:/usr/local/sbin:$GOPATH/bin:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/zip/bin:$PATH"
+export PATH="/usr/local/opt/unzip/bin:$PATH"
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/m4/bin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
