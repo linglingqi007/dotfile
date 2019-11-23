@@ -85,31 +85,31 @@ autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\
 
 """"""""""""""""""""""""""""""""""""""""""""" map 
 let mapleader = ','
-map <Leader>e :vsplit ~/.vimrc<CR>
-map <Leader>r :source ~/.vimrc<CR>
+map <leader>e :vsplit ~/.vimrc<cr>
+map <leader>r :source ~/.vimrc<cr>
 " Find merge conflict markers
-map <Leader>fc /\v^[<\|=>]{7}( .*\|$)<CR> 
-map <Leader>nl :nohl<CR>
-map <Leader>nn :set invnumber <BAR> set invrelativenumber<CR>
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<cr> 
+map <leader>nl :nohl<cr>
+map <leader>nn :set invnumber <bar> set invrelativenumber<cr>
 xnoremap < <gv
 xnoremap > >gv
 nmap j gj
 nmap k gk
 
 """""""""""""""""""""""""""""""" quickfix
-map <C-j> :cnext<CR>
-map <C-k> :cprevious<CR>
-nnoremap <Leader>c :cclose<CR>
-nnoremap <Leader>o :copen<CR>
+map <c-j> :cnext<cr>
+map <c-k> :cprevious<cr>
+nnoremap <leader>c :cclose<cr>
+nnoremap <leader>o :copen<cr>
 
 """""""""""""""""""""""""" localtionlist
-map <C-n> :lnext<CR>
-map <C-p> :lprevious<CR>
-nnoremap <Leader>C :lclose<CR>
-nnoremap <Leader>O :lopen<CR>
+map <c-n> :lnext<cr>
+map <c-p> :lprevious<cr>
+nnoremap <leader>C :lclose<cr>
+nnoremap <leader>O :lopen<cr>
 
 """""""""""""""""""""""""""" buffers
-nnoremap <Leader>d :bd<CR>
+nnoremap <leader>d :bd<cr>
 
 """""""""""""""""""""""""""""""""""""""" gruvbox
 colorscheme gruvbox
@@ -164,16 +164,16 @@ let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unicode_symbols = 1
 
-nmap <Space>1 <Plug>lightline#bufferline#go(1)
-nmap <Space>2 <Plug>lightline#bufferline#go(2)
-nmap <Space>3 <Plug>lightline#bufferline#go(3)
-nmap <Space>4 <Plug>lightline#bufferline#go(4)
-nmap <Space>5 <Plug>lightline#bufferline#go(5)
-nmap <Space>6 <Plug>lightline#bufferline#go(6)
-nmap <Space>7 <Plug>lightline#bufferline#go(7)
-nmap <Space>8 <Plug>lightline#bufferline#go(8)
-nmap <Space>9 <Plug>lightline#bufferline#go(9)
-nmap <Space>0 <Plug>lightline#bufferline#go(10)
+nmap <space>1 <Plug>lightline#bufferline#go(1)
+nmap <space>2 <Plug>lightline#bufferline#go(2)
+nmap <space>3 <Plug>lightline#bufferline#go(3)
+nmap <space>4 <Plug>lightline#bufferline#go(4)
+nmap <space>5 <Plug>lightline#bufferline#go(5)
+nmap <space>6 <Plug>lightline#bufferline#go(6)
+nmap <space>7 <Plug>lightline#bufferline#go(7)
+nmap <space>8 <Plug>lightline#bufferline#go(8)
+nmap <space>9 <Plug>lightline#bufferline#go(9)
+nmap <space>0 <Plug>lightline#bufferline#go(10)
 
 function! LightlineModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -237,41 +237,41 @@ endfunction
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 
-nmap <Space>ff :Files<CR>
-nmap <Space>fb :Buffers<CR>
-nmap <Space>fw :Windows<CR>
-nmap <Space>fH :History<CR>
-nmap <Space>fh :History:<CR>
-nmap <Space>fs :History/<CR>
-nmap <Space>fa :Ag<CR>
-nmap <Space>fM :Maps<CR>
-nmap <Space>fm :Marks<CR>
-nmap <Space>fc :Commands<CR>
-nmap <Space>ft :BTags<CR>
-nmap <Space>fT :Tags<CR>
+nmap <space>ff :Files<cr>
+nmap <space>fb :Buffers<cr>
+nmap <space>fw :Windows<cr>
+nmap <space>fH :History<cr>
+nmap <space>fh :History:<cr>
+nmap <space>fs :History/<cr>
+nmap <space>fa :Ag<cr>
+nmap <space>fM :Maps<cr>
+nmap <space>fm :Marks<cr>
+nmap <space>fc :Commands<cr>
+nmap <space>ft :BTags<cr>
+nmap <space>fT :Tags<cr>
 
 """""""""""""""""""""""""""""""""""" vim-gitgutter
-nmap <Space>gj <Plug>(GitGutterNextHunk)
-nmap <Space>gk <Plug>(GitGutterPrevHunk)
-nmap <Space>gh <Plug>(GitGutterPreviewHunk)
-nmap <Space>gs <Plug>(GitGutterStageHunk)
-nmap <Space>gu <Plug>(GitGutterUndoHunk)
+nmap <space>gj <Plug>(GitGutterNextHunk)
+nmap <space>gk <Plug>(GitGutterPrevHunk)
+nmap <space>gh <Plug>(GitGutterPreviewHunk)
+nmap <space>gs <Plug>(GitGutterStageHunk)
+nmap <space>gu <Plug>(GitGutterUndoHunk)
 
 """""""""""""""""""""""""""""""""""""""" vim-easymotion
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
 """""""""""""""""""""""""" ultisnips
-let g:UltiSnipsExpandTrigger = '<C-f>'
-let g:UltiSnipsJumpForwardTrigger = '<C-f>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
+let g:UltiSnipsExpandTrigger = '<c-f>'
+let g:UltiSnipsJumpForwardTrigger = '<c-f>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 
 """""""""""""""""""""""""""""""" markdown-preview.nvim
 let g:mkdp_open_ip = '192.168.56.77'
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_open_to_the_world = 1
 
-nmap <Leader>mp <Plug>MarkdownPreviewToggle
+nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 """""""""""""""""""""""""""" nerttree
 let NERDTreeShowBookmarks = 1
@@ -280,32 +280,32 @@ let NERDTreeQuitOnOpen = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeWinSize = 41
 
-map <Leader>nt :NERDTreeFocus<CR>
-map <Leader>j :NERDTreeFind<CR>
+map <leader>nt :NERDTreeFocus<cr>
+map <leader>j :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""" tagbar
 let g:tagbar_width = 41
 
-map <Leader>t :TagbarOpenAutoClose<CR>
+map <leader>t :TagbarOpenAutoClose<cr>
 
 """""""""""""""""""""""""" ack.vim
 let g:ackprg = 'ag --vimgrep'
 
-nnoremap <Leader>s :Ack!<Space>
-nnoremap <Space>w :Ack! "\b<C-r><C-w>\b"<CR>
+nnoremap <leader>s :Ack!<space>
+nnoremap <space>w :Ack! "\b<c-r><c-w>\b"<cr>
 
 """""""""""""""""""""""""" vim-easy-align
-nmap <Leader>a <Plug>(EasyAlign)
-xmap <Leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""" scratch.vim
 let g:scratch_no_mappings = 1
 let g:scratch_persistence_file = '~/.cache/vim/scratch.vim'
 
-nmap <Leader>gs <plug>(scratch-insert-reuse)
-nmap <Leader>gS <plug>(scratch-insert-clear)
-xmap <Leader>gs <plug>(scratch-selection-reuse)
-xmap <Leader>gS <plug>(scratch-selection-clear)
+nmap <leader>gs <plug>(scratch-insert-reuse)
+nmap <leader>gS <plug>(scratch-insert-clear)
+xmap <leader>gs <plug>(scratch-selection-reuse)
+xmap <leader>gS <plug>(scratch-selection-clear)
 
 """""""""""""""""""""""""""" ale
 let g:ale_sign_warning = "\uf071"
@@ -349,7 +349,7 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_echo_current_diagnostic = 0
-let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
+let g:ycm_key_list_stop_completion = ['<c-y>', '<Enter>']
 
 """""""""""""""""""""" python
 let g:ycm_python_interpreter_path = ''
@@ -360,10 +360,10 @@ let g:ycm_extra_conf_vim_data = [
 \]
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-nnoremap <Space>jd :YcmCompleter GoTo<CR>
-nnoremap <Space>jt :YcmCompleter GoToType<CR>
-nnoremap <Space>ji :YcmCompleter GetType<CR>
-nnoremap <Space>jk :YcmCompleter GetDoc<CR>
+nnoremap <space>jd :YcmCompleter GoTo<cr>
+nnoremap <space>jt :YcmCompleter GoToType<cr>
+nnoremap <space>ji :YcmCompleter GetType<cr>
+nnoremap <space>jk :YcmCompleter GetDoc<cr>
 
 """""""""""""""""""""""""""""""" vim-go
 let g:go_highlight_types = 1
@@ -408,15 +408,15 @@ function! s:build_go_files()
 endfunction
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType go nmap <Space>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <Space>I <Plug>(go-implements)
-autocmd FileType go nmap <Space>r  <Plug>(go-run)
-autocmd FileType go nmap <Space>t  <Plug>(go-test)
-autocmd FileType go nmap <Space>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Space>i <Plug>(go-info)
-autocmd FileType go nmap <Space>T :GoDefType<CR>
-autocmd FileType go nmap <Space>e :GoIfErr<CR>
-autocmd FileType go nmap <Space>s :GoFillStruct<CR>
+autocmd FileType go nmap <space>b :<c-u>call <SID>build_go_files()<cr>
+autocmd FileType go nmap <space>I <Plug>(go-implements)
+autocmd FileType go nmap <space>r  <Plug>(go-run)
+autocmd FileType go nmap <space>t  <Plug>(go-test)
+autocmd FileType go nmap <space>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <space>i <Plug>(go-info)
+autocmd FileType go nmap <space>T :GoDefType<cr>
+autocmd FileType go nmap <space>e :GoIfErr<cr>
+autocmd FileType go nmap <space>s :GoFillStruct<cr>
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
@@ -424,7 +424,7 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 """""""""""""""""""""""" emmet-vim
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_leader_key='<c-e>'
 autocmd FileType html,css,vue,js,ts EmmetInstall
 
 """""""""""""""""""""""""""""""" .vimrc ends

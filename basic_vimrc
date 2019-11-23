@@ -1,8 +1,10 @@
 """""""""""""""""""""""" .vimrc
 call plug#begin('~/.vim/plugged')
+Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""" basic
@@ -45,18 +47,23 @@ set scrolljump=5
 set scrolloff=3
 set nojoinspaces
 set splitbelow
+set grepprg=ag\ --nogroup\ --nocolor
+set wrap
+set linebreak
+set wrapmargin=2
+set scl=yes
 
 """"""""""""""""""""""""""""""""""""""""""""" map
 let mapleader = ","
-map <Leader>e :vsplit ~/.vimrc<CR>
-map <Leader>r :source ~/.vimrc<CR>
+map <leader>e :vsplit ~/.vimrc<cr>
+map <leader>r :source ~/.vimrc<cr>
 xnoremap < <gv
 xnoremap > >gv
 nmap j gj
 nmap k gk
-map <Leader>nl :nohl<CR>
-map <Leader>nn :set invnumber <BAR> set invrelativenumber<CR>
-nnoremap <Leader>d :bd<CR>
+map <leader>nl :nohl<cr>
+map <leader>nn :set invnumber <bar> set invrelativenumber<cr>
+nnoremap <leader>d :bd<cr>
 
 """""""""""""""""""""""""""""""""""""""" gruvbox
 colorscheme gruvbox
