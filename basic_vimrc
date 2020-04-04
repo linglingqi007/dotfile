@@ -64,6 +64,7 @@ nmap k gk
 map <leader>nl :nohl<cr>
 map <leader>nn :set invnumber <bar> set invrelativenumber<cr>
 nnoremap <leader>d :bd<cr>
+imap kj <ESC>
 
 """""""""""""""""""""""""""""""""""""""" gruvbox
 colorscheme gruvbox
