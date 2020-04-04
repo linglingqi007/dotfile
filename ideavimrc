@@ -8,3 +8,4 @@ map <leader>h <C-w>h
 map <leader>l <C-w>l
 map <leader>j <C-w>j
 map <leader>k <C-w>k
+imap kj <ESC>
