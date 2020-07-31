@@ -6,14 +6,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer --clang-completer' }
+Plug 'ycm-core/YouCompleteMe'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'SirVer/ultisnips'
@@ -23,12 +20,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
-"""""""""""""""""""""""""""""""" markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-"""""""""""""""""""""""""""""""""" web
 Plug 'mattn/emmet-vim'
 Plug 'heavenshell/vim-jsdoc'
-"""""""""""""""""""""""""""""" go
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 call plug#end()
@@ -81,6 +75,7 @@ set linebreak
 set wrapmargin=2
 set scl=yes 
 
+"""""""""""""""""""""""""""""" auto command
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)\c')
 
 """"""""""""""""""""""""""""""""""""""""""""" map 
@@ -95,6 +90,7 @@ xnoremap < <gv
 xnoremap > >gv
 nmap j gj
 nmap k gk
+imap kj <ESC>
 
 """""""""""""""""""""""""""""""" quickfix
 map <c-j> :cnext<cr>
@@ -153,14 +149,8 @@ let g:lightline.component_expand = {
 \   'buffers': 'lightline#bufferline#buffers',
 \}
 
-let g:lightline#ale#indicator_checking = "\uf110 "
-let g:lightline#ale#indicator_warnings = "\uf071 "
-let g:lightline#ale#indicator_errors = "\uf05e "
-let g:lightline#ale#indicator_ok = "\uf00c "
-
 let g:lightline#bufferline#show_number = 2
 let g:lightline#bufferline#unnamed = '[No Name]'
-let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unicode_symbols = 1
 
@@ -180,7 +170,7 @@ function! LightlineModified()
 endfunction
 
 function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? "\uf023" : ''
+    return &ft !~? 'help' && &readonly ? "r" : ''
 endfunction
 
 function! LightlineFilename()
@@ -199,7 +189,7 @@ endfunction
 function! LightlineFugitive()
     try
         if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = "\uf126 "  " edit here for cool mark
+            let mark = ""  " edit here for cool mark
             let branch = fugitive#head()
             return branch !=# '' ? mark.branch : ''
         endif
@@ -209,11 +199,11 @@ function! LightlineFugitive()
 endfunction
 
 function! LightlineFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+    return winwidth(0) > 70 ? (&fileformat) : ''
 endfunction
 
 function! LightlineFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightlineFileencoding()
@@ -267,7 +257,6 @@ let g:UltiSnipsJumpForwardTrigger = '<c-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 
 """""""""""""""""""""""""""""""" markdown-preview.nvim
-let g:mkdp_open_ip = '192.168.56.77'
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_open_to_the_world = 1
 
@@ -298,29 +287,18 @@ nnoremap <space>w :Ack! "\b<c-r><c-w>\b"<cr>
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
 
-"""""""""""""""""""""""""""" scratch.vim
-let g:scratch_no_mappings = 1
-let g:scratch_persistence_file = '~/.cache/vim/scratch.vim'
-
-nmap <leader>gs <plug>(scratch-insert-reuse)
-nmap <leader>gS <plug>(scratch-insert-clear)
-xmap <leader>gs <plug>(scratch-selection-reuse)
-xmap <leader>gS <plug>(scratch-selection-clear)
-
 """""""""""""""""""""""""""" ale
-let g:ale_sign_warning = "\uf071"
-let g:ale_sign_error = "\uf05e"
-let g:ale_echo_msg_format='[%linter%] %s [%severity%]'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_text_changed = 'normal'
+let g:ale_echo_msg_format='[%linter%][%severity%]%code: %%s '
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
+
 let g:ale_linter_aliases = {
 \   'vue': ['vue', 'javascript'],
 \}
+
 let g:ale_linters = {
 \   'python': ['pylint'],
-\   'go': ['golint', 'gopls'],
+\   'go': ['golangci-lint'],
 \   'javascript': ['eslint'],
 \   'html': ['alex'],
 \   'json': ['jsonlint'],
@@ -350,10 +328,9 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_echo_current_diagnostic = 0
 let g:ycm_key_list_stop_completion = ['<c-y>', '<Enter>']
-
-"""""""""""""""""""""" python
 let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
+let g:ycm_server_python_interpreter='python3'
 let g:ycm_extra_conf_vim_data = [ 
 \   'g:ycm_python_interpreter_path',
 \   'g:ycm_python_sys_path',
@@ -372,6 +349,7 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_variable_declarations = 1
+let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
@@ -381,17 +359,11 @@ let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_space_tab_error = 1
 let g:go_highlight_trailing_whitespace_error = 1
-let g:go_test_timeout = '10s'
-let g:go_info_mode = 'gopls'
-let g:go_auto_sameids = 1
-let g:go_updatetime = 100
 let g:go_fmt_command = 'goimports'
-let g:go_fmt_fail_silently = 1
-let g:go_def_mode = 'gopls'
+let g:go_implements_mode = 'gopls'
 let g:go_snippet_engine = 'ultisnips'
 let g:go_metalinter_deadline = '5s'
 let g:go_decls_mode = 'fzf'
-" let g:go_debug = ['shell-commands']
 let g:go_debug_windows = {
 \   'out': 'bo 10new',
 \   'vars': 'lefta 30vnew',
@@ -409,7 +381,6 @@ endfunction
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd FileType go nmap <space>b :<c-u>call <SID>build_go_files()<cr>
-autocmd FileType go nmap <space>I <Plug>(go-implements)
 autocmd FileType go nmap <space>r  <Plug>(go-run)
 autocmd FileType go nmap <space>t  <Plug>(go-test)
 autocmd FileType go nmap <space>c <Plug>(go-coverage-toggle)
@@ -417,6 +388,7 @@ autocmd FileType go nmap <space>i <Plug>(go-info)
 autocmd FileType go nmap <space>T :GoDefType<cr>
 autocmd FileType go nmap <space>e :GoIfErr<cr>
 autocmd FileType go nmap <space>s :GoFillStruct<cr>
+autocmd FileType go nmap <space>I <Plug>(go-implements)
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
