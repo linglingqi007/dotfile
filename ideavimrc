@@ -34,16 +34,16 @@ map <leader>t :action Refactorings.QuickListPopupAction<CR>
 map <leader>z :action ToggleDistractionFreeMode<CR>
 map <leader>a :action Annotate<CR>
 map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
-map <leader>H :action LocalHistory.ShowHistory<CR>
 map <leader>v :action Vcs.QuickListPopupAction<CR>
+map <leader>H :action LocalHistory.ShowHistory<CR>
 map <leader>l :action QuickJavaDoc<CR>
 
 map <leader>s :action SelectInProjectView<CR>
 map <S-Space> :action GotoNextError<CR>
 map <leader>m :action VcsShowNextChangeMarker<CR>
-map <leader>M :action VcsShowPrevChangeMarker<CR>
 map <leader>w :action ShowNavBar<CR>
-map <leader>C :action editRunConfigurations<CR>
+map <leader>u :action editRunConfigurations<CR>
+map <leader>q :action EvaluateExpression<CR>
 map <C-t> :action Back<CR>
 map gd :action GotoDeclaration<CR>
 
