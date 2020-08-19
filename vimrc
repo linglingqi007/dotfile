@@ -81,6 +81,7 @@ set scl=yes
 let mapleader = ','
 map <leader>e :vsplit ~/.vimrc<cr>
 map <leader>r :source ~/.vimrc<cr>
+map <leader>q :nohl<cr>
 map <leader>I :set invnumber <bar> set invrelativenumber<cr>
 xnoremap < <gv
 xnoremap > >gv
