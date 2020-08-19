@@ -1,6 +1,9 @@
-"""""""""""""""""""""""" .vimrc
+""" .vimrc
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
@@ -10,7 +13,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'mileszs/ack.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'SirVer/ultisnips'
@@ -27,7 +29,7 @@ Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""" basic
+""" basic
 set nocompatible
 set history=500
 set cmdheight=1
@@ -75,27 +77,20 @@ set linebreak
 set wrapmargin=2
 set scl=yes 
 
-"""""""""""""""""""""""""""""" auto command
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)\c')
-
 """"""""""""""""""""""""""""""""""""""""""""" map 
 let mapleader = ','
 map <leader>e :vsplit ~/.vimrc<cr>
 map <leader>r :source ~/.vimrc<cr>
-" Find merge conflict markers
-map <leader>fc /\v^[<\|=>]{7}( .*\|$)<cr> 
-map <leader>nl :nohl<cr>
-map <leader>nn :set invnumber <bar> set invrelativenumber<cr>
+map <leader>I :set invnumber <bar> set invrelativenumber<cr>
 xnoremap < <gv
 xnoremap > >gv
 nmap j gj
 nmap k gk
-imap kj <ESC>
 
 """""""""""""""""""""""""""""""" quickfix
 map <c-j> :cnext<cr>
 map <c-k> :cprevious<cr>
-nnoremap <leader>c :cclose<cr>
+noremap <leader>c :cclose<cr>
 nnoremap <leader>o :copen<cr>
 
 """""""""""""""""""""""""" localtionlist
@@ -227,29 +222,23 @@ endfunction
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 
-nmap <space>ff :Files<cr>
-nmap <space>fb :Buffers<cr>
-nmap <space>fw :Windows<cr>
-nmap <space>fH :History<cr>
-nmap <space>fh :History:<cr>
-nmap <space>fs :History/<cr>
-nmap <space>fa :Ag<cr>
-nmap <space>fM :Maps<cr>
-nmap <space>fm :Marks<cr>
-nmap <space>fc :Commands<cr>
-nmap <space>ft :BTags<cr>
-nmap <space>fT :Tags<cr>
+nmap <space>f :Files<cr>
+nmap <space>b :Buffers<cr>
+nmap <space>w :Windows<cr>
 
 """""""""""""""""""""""""""""""""""" vim-gitgutter
-nmap <space>gj <Plug>(GitGutterNextHunk)
-nmap <space>gk <Plug>(GitGutterPrevHunk)
-nmap <space>gh <Plug>(GitGutterPreviewHunk)
-nmap <space>gs <Plug>(GitGutterStageHunk)
-nmap <space>gu <Plug>(GitGutterUndoHunk)
+nmap <space>j <Plug>(GitGutterNextHunk)
+nmap <space>k <Plug>(GitGutterPrevHunk)
+nmap <space>v <Plug>(GitGutterPreviewHunk)
 
 """""""""""""""""""""""""""""""""""""""" vim-easymotion
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
 
 """""""""""""""""""""""""" ultisnips
 let g:UltiSnipsExpandTrigger = '<c-f>'
@@ -260,7 +249,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_open_to_the_world = 1
 
-nmap <leader>mp <Plug>MarkdownPreviewToggle
+nmap <leader>p <Plug>MarkdownPreviewToggle
 
 """""""""""""""""""""""""""" nerttree
 let NERDTreeShowBookmarks = 1
@@ -269,8 +258,8 @@ let NERDTreeQuitOnOpen = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeWinSize = 41
 
-map <leader>nt :NERDTreeFocus<cr>
-map <leader>j :NERDTreeFind<cr>
+map <leader>n :NERDTreeFocus<cr>
+map <leader>s :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""" tagbar
 let g:tagbar_width = 41
@@ -279,13 +268,6 @@ map <leader>t :TagbarOpenAutoClose<cr>
 
 """""""""""""""""""""""""" ack.vim
 let g:ackprg = 'ag --vimgrep'
-
-nnoremap <leader>s :Ack!<space>
-nnoremap <space>w :Ack! "\b<c-r><c-w>\b"<cr>
-
-"""""""""""""""""""""""""" vim-easy-align
-nmap <leader>a <Plug>(EasyAlign)
-xmap <leader>a <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""" ale
 let g:ale_echo_msg_format='[%linter%][%severity%]%code: %%s '
@@ -337,10 +319,10 @@ let g:ycm_extra_conf_vim_data = [
 \]
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-nnoremap <space>jd :YcmCompleter GoTo<cr>
-nnoremap <space>jt :YcmCompleter GoToType<cr>
-nnoremap <space>ji :YcmCompleter GetType<cr>
-nnoremap <space>jk :YcmCompleter GetDoc<cr>
+nnoremap <leader>jd :YcmCompleter GoTo<cr>
+nnoremap <leader>jt :YcmCompleter GoToType<cr>
+nnoremap <leader>ji :YcmCompleter GetType<cr>
+nnoremap <leader>jk :YcmCompleter GetDoc<cr>
 
 """""""""""""""""""""""""""""""" vim-go
 let g:go_highlight_types = 1
@@ -370,25 +352,8 @@ let g:go_debug_windows = {
 \   'stack': 'rightb 21new',
 \}
 
-function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-        call go#test#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-        call go#cmd#Build(0)
-    endif
-endfunction
-
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType go nmap <space>b :<c-u>call <SID>build_go_files()<cr>
-autocmd FileType go nmap <space>r  <Plug>(go-run)
-autocmd FileType go nmap <space>t  <Plug>(go-test)
-autocmd FileType go nmap <space>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <space>i <Plug>(go-info)
-autocmd FileType go nmap <space>T :GoDefType<cr>
-autocmd FileType go nmap <space>e :GoIfErr<cr>
-autocmd FileType go nmap <space>s :GoFillStruct<cr>
-autocmd FileType go nmap <space>I <Plug>(go-implements)
+autocmd FileType go nmap <leader>b  <Plug>(go-run)
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
