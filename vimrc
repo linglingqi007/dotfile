@@ -231,6 +231,7 @@ nmap <space>w :Windows<cr>
 nmap <space>j <Plug>(GitGutterNextHunk)
 nmap <space>k <Plug>(GitGutterPrevHunk)
 nmap <space>v <Plug>(GitGutterPreviewHunk)
+nmap <space>u <Plug>(GitGutterUndoHunkh)
 
 """""""""""""""""""""""""""""""""""""""" vim-easymotion
 let g:EasyMotion_startofline = 0
@@ -280,8 +281,8 @@ let g:ale_linter_aliases = {
 \}
 
 let g:ale_linters = {
-\   'python': ['pylint'],
-\   'go': ['golangci-lint'],
+\   'go': ['golint', 'gopls', 'golangci-lint'],
+\   'python': ['flake8'],
 \   'javascript': ['eslint'],
 \   'html': ['alex'],
 \   'json': ['jsonlint'],

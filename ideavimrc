@@ -9,6 +9,7 @@ set multiple-cursors
 set ReplaceWithRegister
 set argtextobj
 set textobj-entire
+set highlightedyank
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>,{:}"
