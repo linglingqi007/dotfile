@@ -28,7 +28,7 @@ set idearefactormode=keep
 map <leader>f <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
 
-map <leader>F :action ReformatCode<CR>
+map \r :action ReformatCode<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>R :action Refactorings.QuickListPopupAction<CR>
 map <leader>z :action ToggleDistractionFreeMode<CR>
@@ -36,7 +36,7 @@ map <leader>a :action Annotate<CR>
 map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
 map <leader>H :action LocalHistory.ShowHistory<CR>
 map <leader>v :action Vcs.QuickListPopupAction<CR>
-map <leader>J :action QuickJavaDoc<CR>
+map <leader>q :action QuickJavaDoc<CR>
 
 map <leader>s :action SelectInProjectView<CR>
 map <S-Space> :action GotoNextError<CR>
@@ -51,8 +51,8 @@ map gd :action GotoDeclaration<CR>
 map <leader>d :action Debug<CR>
 map <leader>c :action Stop<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
-map <leader>o :action StepInto<CR>
-map <leader>i :action SmartStepInto<CR>
+map <leader>i :action StepInto<CR>
+map <leader>o :action SmartStepInto<CR>
 map <leader>j :action StepOver<CR>
 map <leader>k :action StepOut<CR>
 map <leader>g :action RunToCursor<CR>
