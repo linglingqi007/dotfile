@@ -80,7 +80,7 @@ set scl=yes
 """"""""""""""""""""""""""""""""""""""""""""" map 
 let mapleader = ','
 map <leader>e :vsplit ~/.vimrc<cr>
-map <leader>r :source ~/.vimrc<cr>
+map <leader>R :source ~/.vimrc<cr>
 map <leader>q :nohl<cr>
 map <leader>I :set invnumber <bar> set invrelativenumber<cr>
 xnoremap < <gv
@@ -355,7 +355,7 @@ let g:go_debug_windows = {
 \}
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType go nmap <leader>b  <Plug>(go-run)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
