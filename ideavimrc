@@ -36,24 +36,23 @@ map <leader>a :action Annotate<CR>
 map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
 map <leader>H :action LocalHistory.ShowHistory<CR>
 map <leader>v :action Vcs.QuickListPopupAction<CR>
-map <leader>q :action QuickJavaDoc<CR>
+map <C-y> :action QuickJavaDoc<CR>
 
 map <leader>s :action SelectInProjectView<CR>
 map <S-Space> :action GotoNextError<CR>
-map <leader>n :action VcsShowNextChangeMarker<CR>
-map <leader>N :action VcsShowPrevChangeMarker<CR>
-map <leader>w :action ShowNavBar<CR>
-map <leader>C :action editRunConfigurations<CR>
-map <leader>E :action EvaluateExpression<CR>
+map <C-n> :action VcsShowNextChangeMarker<CR>
+map <C-p> :action VcsShowPrevChangeMarker<CR>
 map <C-t> :action Back<CR>
 map gd :action GotoDeclaration<CR>
 
 map <leader>d :action Debug<CR>
-map <leader>c :action Stop<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
-map <leader>i :action StepInto<CR>
-map <leader>o :action SmartStepInto<CR>
-map <leader>j :action StepOver<CR>
-map <leader>k :action StepOut<CR>
-map <leader>g :action RunToCursor<CR>
-map <leader>t :action Resume<CR>
+map <leader>t :action EvaluateExpression<CR>
+map <leader>c :action editRunConfigurations<CR>
+map <C-c> :action Stop<CR>
+map <C-i> :action StepInto<CR>
+map <C-o> :action SmartStepInto<CR>
+map <C-j> :action StepOver<CR>
+map <C-k> :action StepOut<CR>
+map <C-h> :action RunToCursor<CR>
+map <C-l> :action Resume<CR>
