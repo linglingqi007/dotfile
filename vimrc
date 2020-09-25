@@ -108,115 +108,104 @@ colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""" lightline.vim
 let g:lightline = {
-\   'colorscheme': 'gruvbox',
-\   'active': {
-\       'left': [['mode', 'paste'], ['fugitive', 'filename']],
-\       'right': [ 
-\           ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
-\           ['lineinfo', 'percent'], 
-\           ['fileformat', 'fileencoding', 'filetype'],
-\       ],
-\   },
-\   'component_function': {
-\       'fugitive': 'LightlineFugitive',
-\       'filename': 'LightlineFilename',
-\       'fileformat': 'LightlineFileformat',
-\       'filetype': 'LightlineFiletype',
-\       'fileencoding': 'LightlineFileencoding',
-\       'mode': 'LightlineMode',
-\   },
-\   'subseparator': {'left': '|', 'right': '|'},
-\}
+            \   'colorscheme': 'gruvbox',
+            \   'active': {
+            \       'left': [['mode', 'paste'], ['fugitive', 'filename']],
+            \       'right': [ 
+            \           ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+            \           ['lineinfo', 'percent'], 
+            \           ['fileformat', 'fileencoding', 'filetype'],
+            \       ],
+            \   },
+            \   'component_function': {
+            \       'fugitive': 'LightlineFugitive',
+            \       'filename': 'LightlineFilename',
+            \       'fileformat': 'LightlineFileformat',
+            \       'filetype': 'LightlineFiletype',
+            \       'fileencoding': 'LightlineFileencoding',
+            \       'mode': 'LightlineMode',
+            \   },
+            \   'subseparator': {'left': '|', 'right': '|'},
+            \}
 
 let g:lightline.tabline = {'left': [['buffers']], 'right': [['']]}
 let g:lightline.component_type = {
-\   'buffers': 'tabsel',
-\   'linter_checking': 'left',
-\   'linter_warnings': 'warning',
-\   'linter_errors': 'error',
-\   'linter_ok': 'left',
-\}
+            \   'buffers': 'tabsel',
+            \   'linter_checking': 'left',
+            \   'linter_warnings': 'warning',
+            \   'linter_errors': 'error',
+            \   'linter_ok': 'left',
+            \}
 
 let g:lightline.component_expand = {
-\   'linter_checking': 'lightline#ale#checking',
-\   'linter_warnings': 'lightline#ale#warnings',
-\   'linter_errors': 'lightline#ale#errors',
-\   'linter_ok': 'lightline#ale#ok',
-\   'buffers': 'lightline#bufferline#buffers',
-\}
+            \   'linter_checking': 'lightline#ale#checking',
+            \   'linter_warnings': 'lightline#ale#warnings',
+            \   'linter_errors': 'lightline#ale#errors',
+            \   'linter_ok': 'lightline#ale#ok',
+            \   'buffers': 'lightline#bufferline#buffers',
+            \}
 
 let g:lightline#bufferline#show_number = 2
 let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unicode_symbols = 1
 
-nmap <space>1 <Plug>lightline#bufferline#go(1)
-nmap <space>2 <Plug>lightline#bufferline#go(2)
-nmap <space>3 <Plug>lightline#bufferline#go(3)
-nmap <space>4 <Plug>lightline#bufferline#go(4)
-nmap <space>5 <Plug>lightline#bufferline#go(5)
-nmap <space>6 <Plug>lightline#bufferline#go(6)
-nmap <space>7 <Plug>lightline#bufferline#go(7)
-nmap <space>8 <Plug>lightline#bufferline#go(8)
-nmap <space>9 <Plug>lightline#bufferline#go(9)
-nmap <space>0 <Plug>lightline#bufferline#go(10)
-
 function! LightlineModified()
-return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightlineReadonly()
-return &ft !~? 'help' && &readonly ? "r" : ''
+    return &ft !~? 'help' && &readonly ? "r" : ''
 endfunction
 
 function! LightlineFilename()
-let fname = expand('%:t')
-return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
-          \ fname == '__Tagbar__' ? g:lightline.fname :
-          \ fname =~ '__Gundo\|NERD_tree' ? '' :
-          \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-          \ &ft == 'unite' ? unite#get_status_string() :
-          \ &ft == 'vimshell' ? vimshell#get_status_string() :
-          \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-          \ ('' != fname ? fname : '[No Name]') .
-          \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+    let fname = expand('%:t')
+    return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+                \ fname == '__Tagbar__' ? g:lightline.fname :
+                \ fname =~ '__Gundo\|NERD_tree' ? '' :
+                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \ &ft == 'unite' ? unite#get_status_string() :
+                \ &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+                \ ('' != fname ? fname : '[No Name]') .
+                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
 function! LightlineFugitive()
-try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-        let mark = ""  " edit here for cool mark
-        let branch = fugitive#head()
-        return branch !=# '' ? mark.branch : ''
-    endif
-catch
-endtry
-return ''
+    try
+        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+            let mark = ""  " edit here for cool mark
+            let branch = fugitive#head()
+            return branch !=# '' ? mark.branch : ''
+        endif
+    catch
+    endtry
+    return ''
 endfunction
 
 function! LightlineFileformat()
-return winwidth(0) > 70 ? (&fileformat) : ''
+    return winwidth(0) > 70 ? (&fileformat) : ''
 endfunction
 
 function! LightlineFiletype()
-return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightlineFileencoding()
-return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
 
 function! LightlineMode()
-let fname = expand('%:t')
-return fname == '__Tagbar__' ? 'Tagbar' :
-            \ fname == 'ControlP' ? 'CtrlP' :
-            \ fname == '__Gundo__' ? 'Gundo' :
-            \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-            \ fname =~ 'NERD_tree' ? 'NERDTree' :
-            \ &ft == 'unite' ? 'Unite' :
-            \ &ft == 'vimfiler' ? 'VimFiler' :
-            \ &ft == 'vimshell' ? 'VimShell' :
-            \ winwidth(0) > 60 ? lightline#mode() : ''
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+                \ fname == 'ControlP' ? 'CtrlP' :
+                \ fname == '__Gundo__' ? 'Gundo' :
+                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+                \ fname =~ 'NERD_tree' ? 'NERDTree' :
+                \ &ft == 'unite' ? 'Unite' :
+                \ &ft == 'vimfiler' ? 'VimFiler' :
+                \ &ft == 'vimshell' ? 'VimShell' :
+                \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""" fzf.vim
@@ -226,6 +215,7 @@ let g:fzf_buffers_jump = 1
 nmap <space>f :Files<cr>
 nmap <space>b :Buffers<cr>
 nmap <space>w :Windows<cr>
+nmap <space>m :Maps<cr>
 
 """""""""""""""""""""""""""""""""""" vim-gitgutter
 nmap <space>j <Plug>(GitGutterNextHunk)
@@ -277,31 +267,31 @@ let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
 let g:ale_linter_aliases = {
-\   'vue': ['vue', 'javascript'],
-\}
+            \   'vue': ['vue', 'javascript'],
+            \}
 
 let g:ale_linters = {
-\   'go': ['golint', 'gopls', 'golangci-lint'],
-\   'python': ['flake8'],
-\   'javascript': ['eslint'],
-\   'html': ['alex'],
-\   'json': ['jsonlint'],
-\   'yaml': ['yamllint'],
-\   'vim': ['vint'],
-\   'ansible': ['ansible-lint'],
-\   'vue': ['eslint', 'vls'],
-\}
+            \   'go': ['golint', 'gopls', 'golangci-lint'],
+            \   'python': ['flake8'],
+            \   'javascript': ['eslint'],
+            \   'html': ['alex'],
+            \   'json': ['jsonlint'],
+            \   'yaml': ['yamllint'],
+            \   'vim': ['vint'],
+            \   'ansible': ['ansible-lint'],
+            \   'vue': ['eslint', 'vls'],
+            \}
 
 let g:ale_fixers = {
-\   'python': ['autopep8', 'reorder-python-imports'],
-\   'javascript': ['eslint'],
-\   'html': ['prettier'],
-\   'json': ['prettier'],
-\   'yaml': ['prettier'],
-\   'css': ['prettier'],
-\   'markdown': ['prettier'],
-\   'vue': ['eslint'],
-\}
+            \   'python': ['autopep8', 'reorder-python-imports'],
+            \   'javascript': ['eslint'],
+            \   'html': ['prettier'],
+            \   'json': ['prettier'],
+            \   'yaml': ['prettier'],
+            \   'css': ['prettier'],
+            \   'markdown': ['prettier'],
+            \   'vue': ['eslint'],
+            \}
 
 """"""""""""""""""""""" YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -316,15 +306,14 @@ let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
 let g:ycm_server_python_interpreter='python3'
 let g:ycm_extra_conf_vim_data = [ 
-\   'g:ycm_python_interpreter_path',
-\   'g:ycm_python_sys_path',
-\]
+            \   'g:ycm_python_interpreter_path',
+            \   'g:ycm_python_sys_path',
+            \]
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-nnoremap gj :YcmCompleter GoTo<cr>
-nnoremap gt :YcmCompleter GoToType<cr>
-nnoremap gi :YcmCompleter GetType<cr>
-nnoremap gk :YcmCompleter GetDoc<cr>
+nnoremap <space>d :YcmCompleter GoTo<cr>
+nnoremap <space>t :YcmCompleter GetType<cr>
+nnoremap <space>i :YcmCompleter GetDoc<cr>
 
 """""""""""""""""""""""""""""""" vim-go
 let g:go_highlight_types = 1
@@ -349,10 +338,10 @@ let g:go_snippet_engine = 'ultisnips'
 let g:go_metalinter_deadline = '5s'
 let g:go_decls_mode = 'fzf'
 let g:go_debug_windows = {
-\   'out': 'bo 10new',
-\   'vars': 'lefta 30vnew',
-\   'stack': 'rightb 21new',
-\}
+            \   'out': 'bo 10new',
+            \   'vars': 'lefta 30vnew',
+            \   'stack': 'rightb 21new',
+            \}
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
