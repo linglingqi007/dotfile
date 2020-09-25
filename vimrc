@@ -1,5 +1,6 @@
 """ .vimrc
 call plug#begin('~/.vim/plugged')
+Plug 'EvanQuan/vim-executioner'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'tpope/vim-surround'
@@ -354,5 +355,8 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<c-e>'
 autocmd FileType html,css,vue,js,ts EmmetInstall
+
+"""""""""""""""""""""""" vim-executioner
+nnoremap <silent> <leader>b :Executioner<Return>
 
 """""""""""""""""""""""""""""""" .vimrc ends
