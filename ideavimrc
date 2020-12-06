@@ -1,65 +1,69 @@
-""" Map leader to space ---------------------
-let mapleader=" "
+source ~/.vimrc.keymap
 
-""" Plugins  --------------------------------
+set clipboard=unnamed,autoselect
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set nu rnu
+set showmode
+set so=5
+
+" plugin
 set easymotion
-set commentary
 set surround
-set multiple-cursorsG
+set multiple-cursors
 set ReplaceWithRegister
 set argtextobj
 set textobj-entire
 set highlightedyank
-
-""" Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>,{:}"
 
-""" Common settings -------------------------
-set nu rnu
-set showmode
-set so=5
-set incsearch
+map f <Plug>(easymotion-s)
 
-""" Idea specific settings ------------------
+" idea specific
 set ideajoin
 set idearefactormode=keep
 set ideamarks
 
-""" Mappings --------------------------------
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
-inoremap jj <Esc>
-noremap ; :
+" general
+nnoremap <leader>s :<C-u>action SelectInProjectView<CR>
+nnoremap <leader>z :<C-u>action ToggleDistractionFreeMode<CR>
 
-map \r :action ReformatCode<CR>
-map <leader>r :action RenameElement<CR>
-map <leader>R :action Refactorings.QuickListPopupAction<CR>
-map <leader>z :action ToggleDistractionFreeMode<CR>
-map <leader>a :action Annotate<CR>
-map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
-map <leader>H :action LocalHistory.ShowHistory<CR>
-map <leader>v :action Vcs.QuickListPopupAction<CR>
+" jump code
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gs :<C-u>action GotoSuperMethod<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gb :<C-u>action JumpToLastChange<CR>
+nnoremap gu :<C-u>action ShowUsages<CR>
+nnoremap gh :<C-u>action Back<CR>
+nnoremap gl :<C-u>action Forward<CR>
 
-map <leader>s :action SelectInProjectView<CR>
-map <S-Space> :action GotoNextError<CR>
-map <C-n> :action VcsShowNextChangeMarker<CR>
-map <C-p> :action VcsShowPrevChangeMarker<CR>
-map <C-t> :action Back<CR>
-nnoremap gd :action GotoDeclaration<CR>
-nnoremap gs :action GotoSuperMethod<CR>
-nnoremap gi :action GotoImplementation<CR>
-nnoremap gb :action JumpToLastChange<CR>
-nnoremap gh :action QuickJavaDoc<CR>
-nnoremap L $
-nnoremap H ^
+" code edit
+nnoremap r :<C-u>action RenameElement<CR>
+nnoremap q :<C-u>action ShowIntentionActions<CR>
+nnoremap cc :<C-u>action CommentByLineComment<CR>
+vnoremap cc :<C-u>action CommentByLineComment<CR>
+vnoremap p :<C-u>action EditorSelectWord<CR>
+vnoremap n :<C-u>action EditorUnSelectWord<CR>
 
-map <leader>d :action Debug<CR>
-map <leader>b :action ToggleLineBreakpoint<CR>
-map <leader>t :action EvaluateExpression<CR>
-map <leader>c :action editRunConfigurations<CR>
-map <C-i> :action StepInto<CR>
-map <C-o> :action SmartStepInto<CR>
-map <C-j> :action StepOver<CR>
-map <C-k> :action StepOut<CR>
-map <C-h> :action RunToCursor<CR>
-map <C-l> :action Resume<CR>
+" show information
+nnoremap go :<C-u>action QuickJavaDoc<CR>
+nnoremap <leader>a :<C-u>action Annotate<CR>
+nnoremap <leader>h :<C-u>action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>l :<C-u>action LocalHistory.ShowHistory<CR>
+nnoremap <leader>e :<C-u>action GotoNextError<CR>
+nnoremap <leader>w :<C-u>action GotoPreviousError<CR>
+nnoremap <leader>j :<C-u>action VcsShowNextChangeMarker<CR>
+nnoremap <leader>k :<C-u>action VcsShowPrevChangeMarker<CR>
+
+" debug
+nnoremap R :<C-u>action ChooseRunConfiguration<CR>
+nnoremap <leader>b :<C-u>action ToggleLineBreakpoint<CR>
+nnoremap <leader>t :<C-u>action EvaluateExpression<CR>
+nnoremap <C-i> :<C-u>action StepInto<CR>
+nnoremap <C-o> :<C-u>action SmartStepInto<CR>
+nnoremap <C-j> :<C-u>action StepOver<CR>
+nnoremap <C-k> :<C-u>action StepOut<CR>
+nnoremap <C-h> :<C-u>action RunToCursor<CR>
+nnoremap <C-l> :<C-u>action Resume<CR>
