@@ -310,8 +310,8 @@ let g:ycm_extra_conf_vim_data = [
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 nnoremap <space>d :YcmCompleter GoTo<cr>
-nnoremap <space>t :YcmCompleter GetType<cr>
-nnoremap <space>i :YcmCompleter GetDoc<cr>
+nnoremap gt :YcmCompleter GetType<cr>
+nnoremap gi :YcmCompleter GetDoc<cr>
 
 """""""""""""""""""""""""""""""" vim-go
 let g:go_highlight_types = 1
@@ -343,7 +343,7 @@ let g:go_debug_windows = {
             \}
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
