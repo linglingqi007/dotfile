@@ -1,11 +1,11 @@
 """ Map leader to space ---------------------
-let mapleader=","
+let mapleader=" "
 
 """ Plugins  --------------------------------
 set easymotion
 set commentary
 set surround
-set multiple-cursors
+set multiple-cursorsG
 set ReplaceWithRegister
 set argtextobj
 set textobj-entire
@@ -15,7 +15,7 @@ set highlightedyank
 let g:argtextobj_pairs="[:],(:),<:>,{:}"
 
 """ Common settings -------------------------
-set number relativenumber
+set nu rnu
 set showmode
 set so=5
 set incsearch
@@ -23,10 +23,13 @@ set incsearch
 """ Idea specific settings ------------------
 set ideajoin
 set idearefactormode=keep
+set ideamarks
 
 """ Mappings --------------------------------
 map <leader>f <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
+inoremap jj <Esc>
+noremap ; :
 
 map \r :action ReformatCode<CR>
 map <leader>r :action RenameElement<CR>
@@ -36,20 +39,24 @@ map <leader>a :action Annotate<CR>
 map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
 map <leader>H :action LocalHistory.ShowHistory<CR>
 map <leader>v :action Vcs.QuickListPopupAction<CR>
-map <C-y> :action QuickJavaDoc<CR>
 
 map <leader>s :action SelectInProjectView<CR>
 map <S-Space> :action GotoNextError<CR>
 map <C-n> :action VcsShowNextChangeMarker<CR>
 map <C-p> :action VcsShowPrevChangeMarker<CR>
 map <C-t> :action Back<CR>
-map gd :action GotoDeclaration<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap gh :action QuickJavaDoc<CR>
+nnoremap L $
+nnoremap H ^
 
 map <leader>d :action Debug<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 map <leader>t :action EvaluateExpression<CR>
 map <leader>c :action editRunConfigurations<CR>
-map <C-c> :action Stop<CR>
 map <C-i> :action StepInto<CR>
 map <C-o> :action SmartStepInto<CR>
 map <C-j> :action StepOver<CR>

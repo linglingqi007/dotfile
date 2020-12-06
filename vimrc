@@ -26,7 +26,7 @@ Plug 'majutsushi/tagbar'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'mattn/emmet-vim'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'tag': 'v1.24', 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 call plug#end()
 
@@ -80,7 +80,7 @@ set scl=yes
 
 """"""""""""""""""""""""""""""""""""""""""""" map 
 let mapleader = ','
-map <leader>e :vsplit ~/.vimrc<cr>
+map <leader>E :vsplit ~/.vimrc<cr>
 map <leader>R :source ~/.vimrc<cr>
 map <leader>q :nohl<cr>
 map <leader>I :set invnumber <bar> set invrelativenumber<cr>
@@ -227,11 +227,6 @@ nmap <space>u <Plug>(GitGutterUndoHunkh)
 """""""""""""""""""""""""""""""""""""""" vim-easymotion
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
 
 """""""""""""""""""""""""" ultisnips
 let g:UltiSnipsExpandTrigger = '<c-f>'
@@ -294,6 +289,8 @@ let g:ale_fixers = {
             \   'vue': ['eslint'],
             \}
 
+let g:ale_go_golangci_lint_options = ''
+
 """"""""""""""""""""""" YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_detailed_diagnostics = ''
@@ -338,6 +335,7 @@ let g:go_implements_mode = 'gopls'
 let g:go_snippet_engine = 'ultisnips'
 let g:go_metalinter_deadline = '5s'
 let g:go_decls_mode = 'fzf'
+let g:go_doc_popup_window = 1
 let g:go_debug_windows = {
             \   'out': 'bo 10new',
             \   'vars': 'lefta 30vnew',
