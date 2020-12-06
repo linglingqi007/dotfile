@@ -1,3 +1,6 @@
+" keymap
+source ~/.vimrc.keymap
+
 """ .vimrc
 call plug#begin('~/.vim/plugged')
 Plug 'EvanQuan/vim-executioner'
@@ -50,7 +53,7 @@ set noerrorbells
 set novisualbell
 set noswapfile
 set nobackup
-set number relativenumber numberwidth=4
+set number rnu numberwidth=4
 set autoindent
 set smartindent
 set expandtab
@@ -77,17 +80,6 @@ set wrap
 set linebreak
 set wrapmargin=2
 set scl=yes 
-
-""""""""""""""""""""""""""""""""""""""""""""" map 
-let mapleader = ','
-map <leader>E :vsplit ~/.vimrc<cr>
-map <leader>R :source ~/.vimrc<cr>
-map <leader>q :nohl<cr>
-map <leader>I :set invnumber <bar> set invrelativenumber<cr>
-xnoremap < <gv
-xnoremap > >gv
-nmap j gj
-nmap k gk
 
 """""""""""""""""""""""""""""""" quickfix
 map <c-j> :cnext<cr>
@@ -309,7 +301,7 @@ let g:ycm_extra_conf_vim_data = [
             \]
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-nnoremap <space>d :YcmCompleter GoTo<cr>
+nnoremap gd :YcmCompleter GoTo<cr>
 nnoremap gt :YcmCompleter GetType<cr>
 nnoremap gi :YcmCompleter GetDoc<cr>
 
