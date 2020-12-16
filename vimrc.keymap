@@ -10,7 +10,6 @@ vnoremap H ^
 inoremap jj <ESC>
 
 noremap ; :
-noremap : ;
 
 nnoremap j gj
 nnoremap k gk

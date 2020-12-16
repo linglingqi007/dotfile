@@ -61,6 +61,7 @@ nnoremap <leader>k :<C-u>action VcsShowPrevChangeMarker<CR>
 nnoremap R :<C-u>action ChooseRunConfiguration<CR>
 nnoremap <leader>b :<C-u>action ToggleLineBreakpoint<CR>
 nnoremap <leader>t :<C-u>action EvaluateExpression<CR>
+nnoremap <leader>c :<C-u>action Stop<CR>
 nnoremap <C-i> :<C-u>action StepInto<CR>
 nnoremap <C-o> :<C-u>action SmartStepInto<CR>
 nnoremap <C-j> :<C-u>action StepOver<CR>
