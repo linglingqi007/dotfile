@@ -8,6 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'machakann/vim-highlightedyank'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
@@ -98,6 +99,9 @@ nnoremap <leader>d :bd<cr>
 
 """""""""""""""""""""""""""""""""""""""" gruvbox
 colorscheme gruvbox
+
+"""""""""" vim-highlightedyank
+let g:highlightedyank_highlight_duration = 300
 
 """""""""""""""""""""""""""""""""""""""""" lightline.vim
 let g:lightline = {
@@ -207,7 +211,6 @@ let g:fzf_buffers_jump = 1
 
 nmap <space>f :Files<cr>
 nmap <space>b :Buffers<cr>
-nmap <space>w :Windows<cr>
 nmap <space>m :Maps<cr>
 
 """""""""""""""""""""""""""""""""""" vim-gitgutter
@@ -282,6 +285,8 @@ let g:ale_fixers = {
             \}
 
 let g:ale_go_golangci_lint_options = ''
+let g:ale_python_autopep8_options = '--max-line-length=200'
+let g:ale_python_flake8_options = '--max-line-length=200'
 
 """"""""""""""""""""""" YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -303,7 +308,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd
 
 nnoremap gd :YcmCompleter GoTo<cr>
 nnoremap gt :YcmCompleter GetType<cr>
-nnoremap gi :YcmCompleter GetDoc<cr>
+nnoremap go :YcmCompleter GetDoc<cr>
 
 """""""""""""""""""""""""""""""" vim-go
 let g:go_highlight_types = 1

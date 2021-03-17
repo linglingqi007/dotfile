@@ -17,6 +17,8 @@ set ReplaceWithRegister
 set argtextobj
 set textobj-entire
 set highlightedyank
+set NERDTree
+
 let g:argtextobj_pairs="[:],(:),<:>,{:}"
 
 map f <Plug>(easymotion-s)
