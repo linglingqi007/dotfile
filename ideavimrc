@@ -40,6 +40,8 @@ nnoremap gb :<C-u>action JumpToLastChange<CR>
 nnoremap gu :<C-u>action ShowUsages<CR>
 nnoremap gh :<C-u>action Back<CR>
 nnoremap gl :<C-u>action Forward<CR>
+nnoremap gM :<C-u>action MethodDown<CR>
+nnoremap gm :<C-u>action MethodUp<CR>
 
 " code edit
 nnoremap r :<C-u>action RenameElement<CR>
@@ -48,6 +50,8 @@ nnoremap cc :<C-u>action CommentByLineComment<CR>
 vnoremap cc :<C-u>action CommentByLineComment<CR>
 vnoremap p :<C-u>action EditorSelectWord<CR>
 vnoremap n :<C-u>action EditorUnSelectWord<CR>
+nnoremap F :<C-u>action ReformatCode<CR>
+vnoremap F :<C-u>action ReformatCode<CR>
 
 " show information
 nnoremap go :<C-u>action QuickJavaDoc<CR>
