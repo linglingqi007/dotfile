@@ -31,13 +31,16 @@ set ideamarks
 " general
 nnoremap <leader>s :<C-u>action SelectInProjectView<CR>
 nnoremap <leader>z :<C-u>action ToggleDistractionFreeMode<CR>
+nnoremap <C-Left> :<C-u>action PreviousTab<CR>
+nnoremap <C-Right> :<C-u>action NextTab<CR>
+nnoremap <leader>q :<C-u>action HideAllWindows<CR>
 
 " jump code
 nnoremap gd :<C-u>action GotoDeclaration<CR>
 nnoremap gs :<C-u>action GotoSuperMethod<CR>
 nnoremap gi :<C-u>action GotoImplementation<CR>
-nnoremap gb :<C-u>action JumpToLastChange<CR>
 nnoremap gu :<C-u>action ShowUsages<CR>
+nnoremap gb :<C-u>action JumpToLastChange<CR>
 nnoremap gh :<C-u>action Back<CR>
 nnoremap gl :<C-u>action Forward<CR>
 nnoremap gM :<C-u>action MethodDown<CR>

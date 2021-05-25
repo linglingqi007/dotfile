@@ -7,8 +7,6 @@ vnoremap L $
 nnoremap H ^
 vnoremap H ^
 
-inoremap jj <ESC>
-
 noremap ; :
 
 nnoremap j gj

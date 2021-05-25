@@ -30,7 +30,7 @@ Plug 'majutsushi/tagbar'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'mattn/emmet-vim'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'fatih/vim-go', { 'tag': 'v1.24', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'tag': 'v1.25', 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 call plug#end()
 
@@ -170,9 +170,9 @@ endfunction
 
 function! LightlineFugitive()
     try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*FugitiveHead')
             let mark = ""  " edit here for cool mark
-            let branch = fugitive#head()
+            let branch = FugitiveHead()
             return branch !=# '' ? mark.branch : ''
         endif
     catch
