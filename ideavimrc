@@ -49,6 +49,7 @@ nnoremap gm :<C-u>action MethodUp<CR>
 " code edit
 nnoremap r :<C-u>action RenameElement<CR>
 nnoremap q :<C-u>action ShowIntentionActions<CR>
+vnoremap q :<C-u>action ShowIntentionActions<CR>
 nnoremap cc :<C-u>action CommentByLineComment<CR>
 vnoremap cc :<C-u>action CommentByLineComment<CR>
 vnoremap p :<C-u>action EditorSelectWord<CR>
@@ -68,6 +69,7 @@ nnoremap <leader>k :<C-u>action VcsShowPrevChangeMarker<CR>
 
 " debug
 nnoremap R :<C-u>action ChooseRunConfiguration<CR>
+nnoremap <leader>d :<C-u>action Debug<CR>
 nnoremap <leader>b :<C-u>action ToggleLineBreakpoint<CR>
 nnoremap <leader>t :<C-u>action EvaluateExpression<CR>
 nnoremap <leader>c :<C-u>action Stop<CR>
