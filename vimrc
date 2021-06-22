@@ -107,23 +107,23 @@ let g:highlightedyank_highlight_duration = 300
 let g:lightline = {
             \   'colorscheme': 'gruvbox',
             \   'active': {
-            \       'left': [['mode', 'paste'], ['fugitive', 'filename']],
-            \       'right': [ 
-            \           ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
-            \           ['lineinfo', 'percent'], 
-            \           ['fileformat', 'fileencoding', 'filetype'],
-            \       ],
-            \   },
-            \   'component_function': {
-            \       'fugitive': 'LightlineFugitive',
-            \       'filename': 'LightlineFilename',
-            \       'fileformat': 'LightlineFileformat',
-            \       'filetype': 'LightlineFiletype',
-            \       'fileencoding': 'LightlineFileencoding',
-            \       'mode': 'LightlineMode',
-            \   },
-            \   'subseparator': {'left': '|', 'right': '|'},
-            \}
+                \       'left': [['mode', 'paste'], ['fugitive', 'filename']],
+                \       'right': [ 
+                    \           ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+                    \           ['lineinfo', 'percent'], 
+                    \           ['fileformat', 'fileencoding', 'filetype'],
+                    \       ],
+                    \   },
+                    \   'component_function': {
+                        \       'fugitive': 'LightlineFugitive',
+                        \       'filename': 'LightlineFilename',
+                        \       'fileformat': 'LightlineFileformat',
+                        \       'filetype': 'LightlineFiletype',
+                        \       'fileencoding': 'LightlineFileencoding',
+                        \       'mode': 'LightlineMode',
+                        \   },
+                        \   'subseparator': {'left': '|', 'right': '|'},
+                        \}
 
 let g:lightline.tabline = {'left': [['buffers']], 'right': [['']]}
 let g:lightline.component_type = {
@@ -348,7 +348,7 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 """""""""""""""""""""""" emmet-vim
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_leader_key = '<c-e>'
 autocmd FileType html,css,vue,js,ts EmmetInstall
 
 """""""""""""""""""""""" vim-executioner
