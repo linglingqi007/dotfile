@@ -352,6 +352,6 @@ let g:user_emmet_leader_key = '<c-e>'
 autocmd FileType html,css,vue,js,ts EmmetInstall
 
 """""""""""""""""""""""" vim-executioner
-nnoremap <silent> <leader>b :Executioner<Return>
+nnoremap <silent> <leader>b :ExecutionerHorizontal<Return>
 
 """""""""""""""""""""""""""""""" .vimrc ends
