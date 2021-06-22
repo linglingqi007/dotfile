@@ -353,5 +353,6 @@ autocmd FileType html,css,vue,js,ts EmmetInstall
 
 """""""""""""""""""""""" vim-executioner
 nnoremap <silent> <leader>b :ExecutionerHorizontal<Return>
+let g:executioner#extensions = {'lua': 'lua %'}
 
 """""""""""""""""""""""""""""""" .vimrc ends
