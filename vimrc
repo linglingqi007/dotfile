@@ -1,7 +1,7 @@
-" keymap
+""" keymap
 source ~/.vimrc.keymap
 
-""" .vimrc
+""" plugins
 call plug#begin('~/.vim/plugged')
 Plug 'EvanQuan/vim-executioner'
 Plug 'jiangmiao/auto-pairs'
@@ -34,7 +34,7 @@ Plug 'fatih/vim-go', { 'tag': 'v1.25', 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 call plug#end()
 
-""" basic
+""" builtin 
 set nocompatible
 set history=500
 set cmdheight=1
@@ -82,32 +82,32 @@ set linebreak
 set wrapmargin=2
 set scl=yes 
 
-"""""""""""""""""""""""""""""""" quickfix
+""" quickfix
 map <c-j> :cnext<cr>
 map <c-k> :cprevious<cr>
 noremap <leader>c :cclose<cr>
 nnoremap <leader>o :copen<cr>
 
-"""""""""""""""""""""""""" localtionlist
+""" localtionlist
 map <c-n> :lnext<cr>
 map <c-p> :lprevious<cr>
 nnoremap <leader>C :lclose<cr>
 nnoremap <leader>O :lopen<cr>
 
-"""""""""""""""""""""""""""" buffers
+""" buffers
 nnoremap <leader>d :bd<cr>
 
-"""""""""""""""""""""""""""""""""""""""" gruvbox
+""" gruvbox
 colorscheme gruvbox
 
-"""""""""" vim-highlightedyank
+""" vim-highlightedyank
 let g:highlightedyank_highlight_duration = 300
 
-"""""""""""""""""""""""""""""""""""""""""" lightline.vim
+""" lightline.vim
 let g:lightline = {
             \   'colorscheme': 'gruvbox',
             \   'active': {
-                \       'left': [['mode', 'paste'], ['fugitive', 'filename']],
+                \       'left': [['mode', 'paste'], ['fugitive', 'filename', 'gitsign']],
                 \       'right': [ 
                     \           ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
                     \           ['lineinfo', 'percent'], 
@@ -116,6 +116,7 @@ let g:lightline = {
                     \   },
                     \   'component_function': {
                         \       'fugitive': 'LightlineFugitive',
+                        \       'gitsign': 'GitSign',
                         \       'filename': 'LightlineFilename',
                         \       'fileformat': 'LightlineFileformat',
                         \       'filetype': 'LightlineFiletype',
@@ -149,6 +150,11 @@ let g:lightline#bufferline#unicode_symbols = 1
 
 function! LightlineModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! GitSign()
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', a, m, r)
 endfunction
 
 function! LightlineReadonly()
@@ -205,7 +211,7 @@ function! LightlineMode()
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""" fzf.vim
+""" fzf.vim
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 
@@ -213,28 +219,25 @@ nmap <space>f :Files<cr>
 nmap <space>b :Buffers<cr>
 nmap <space>m :Maps<cr>
 
-"""""""""""""""""""""""""""""""""""" vim-gitgutter
-nmap <space>j <Plug>(GitGutterNextHunk)
-nmap <space>k <Plug>(GitGutterPrevHunk)
-nmap <space>v <Plug>(GitGutterPreviewHunk)
-nmap <space>u <Plug>(GitGutterUndoHunkh)
-
-"""""""""""""""""""""""""""""""""""""""" vim-easymotion
+""" vim-easymotion
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
-"""""""""""""""""""""""""" ultisnips
+nmap f <Plug>(easymotion-sn)
+vmap f <Plug>(easymotion-sn)
+
+""" ultisnips
 let g:UltiSnipsExpandTrigger = '<c-f>'
 let g:UltiSnipsJumpForwardTrigger = '<c-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 
-"""""""""""""""""""""""""""""""" markdown-preview.nvim
+""" markdown-preview.nvim
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_open_to_the_world = 1
 
 nmap <leader>p <Plug>MarkdownPreviewToggle
 
-"""""""""""""""""""""""""""" nerttree
+""" nerttree
 let NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
 let NERDTreeQuitOnOpen = 3
@@ -244,15 +247,15 @@ let NERDTreeWinSize = 41
 map <leader>n :NERDTreeFocus<cr>
 map <leader>s :NERDTreeFind<cr>
 
-"""""""""""""""""""""""""""""""" tagbar
+""" tagbar
 let g:tagbar_width = 41
 
 map <leader>t :TagbarOpenAutoClose<cr>
 
-"""""""""""""""""""""""""" ack.vim
+""" ack.vim
 let g:ackprg = 'ag --vimgrep'
 
-"""""""""""""""""""""""""""" ale
+""" ale
 let g:ale_echo_msg_format='[%linter%][%severity%]%code: %%s '
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -288,7 +291,7 @@ let g:ale_go_golangci_lint_options = ''
 let g:ale_python_autopep8_options = '--max-line-length=200'
 let g:ale_python_flake8_options = '--max-line-length=200'
 
-""""""""""""""""""""""" YouCompleteMe
+""" YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_use_clangd = 0
@@ -310,7 +313,7 @@ nnoremap gd :YcmCompleter GoTo<cr>
 nnoremap gt :YcmCompleter GetType<cr>
 nnoremap go :YcmCompleter GetDoc<cr>
 
-"""""""""""""""""""""""""""""""" vim-go
+""" vim-go
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -346,13 +349,15 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-"""""""""""""""""""""""" emmet-vim
+""" emmet-vim
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = '<c-e>'
+
 autocmd FileType html,css,vue,js,ts EmmetInstall
 
-"""""""""""""""""""""""" vim-executioner
-nnoremap <silent> <leader>b :ExecutionerHorizontal<Return>
+""" vim-executioner
 let g:executioner#extensions = {'lua': 'lua %'}
+
+nnoremap <silent> <leader>b :ExecutionerHorizontal<Return>
 
 """""""""""""""""""""""""""""""" .vimrc ends
