@@ -1,3 +1,13 @@
+# alias
+
+# proxy
 alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias noproxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY all_proxy'
+
+# tools
 alias lg='lazygit'
+alias ls='exa'
+alias ll='exa -lh'
+alias la='exa -lha'
+
+# alias ends here

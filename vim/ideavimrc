@@ -1,5 +1,6 @@
-source ~/.vimrc.keymap
+let mapleader=" "
 
+" vim settings
 set clipboard=unnamed,autoselect
 set hlsearch
 set incsearch
@@ -7,75 +8,165 @@ set ignorecase
 set smartcase
 set nu rnu
 set showmode
-set so=7
+set scrolloff=7
+set timeoutlen=1000
+set notimeout
 
-" plugin
+" handlers
+sethandler <C-2> a:ide
+sethandler <C-S-2> a:ide
+sethandler <C-6> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-;> a:vim
+sethandler <C-S-;> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-G> a:ide
+sethandler <C-H> a:ide
+sethandler <C-I> a:ide
+sethandler <C-J> a:ide
+sethandler <C-K> a:ide
+sethandler <C-L> a:ide
+sethandler <C-M> a:ide
+sethandler <C-N> a:vim
+sethandler <C-O> a:ide
+sethandler <C-P> a:vim
+sethandler <C-R> a:ide
+sethandler <C-S> a:ide
+sethandler <C-T> a:ide
+sethandler <C-V> a:vim
+sethandler <C-W> a:ide
+
+" plugins
 set easymotion
+set commentary
 set surround
 set multiple-cursors
 set ReplaceWithRegister
 set argtextobj
-set textobj-entire
 set highlightedyank
 set NERDTree
+set which-key
+set keep-english-in-normal-and-restore-in-insert
 
-let g:argtextobj_pairs="[:],(:),<:>,{:}"
+let g:argtextobj_pairs="[:],(:),<:>"
 
-map f <Plug>(easymotion-s)
-
-" idea specific
+" idea
 set ideajoin
 set idearefactormode=keep
 set ideamarks
 
-" general
-nnoremap <leader>s :<C-u>action SelectInProjectView<CR>
-nnoremap <leader>z :<C-u>action ToggleDistractionFreeMode<CR>
-nnoremap <C-Left> :<C-u>action PreviousTab<CR>
-nnoremap <C-Right> :<C-u>action NextTab<CR>
-nnoremap <leader>q :<C-u>action HideAllWindows<CR>
+" map of multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
 
-" jump code
-nnoremap gd :<C-u>action GotoDeclaration<CR>
-nnoremap gs :<C-u>action GotoSuperMethod<CR>
-nnoremap gi :<C-u>action GotoImplementation<CR>
-nnoremap gu :<C-u>action ShowUsages<CR>
-nnoremap gb :<C-u>action JumpToLastChange<CR>
-nnoremap gh :<C-u>action Back<CR>
-nnoremap gl :<C-u>action Forward<CR>
-nnoremap gM :<C-u>action MethodDown<CR>
-nnoremap gm :<C-u>action MethodUp<CR>
+" map of easymotion
+nmap f <Plug>(easymotion-s)
+
+" map of basic
+map / <nop>
+noremap ; :
+nnoremap L g_
+vnoremap L g_
+nnoremap H ^
+vnoremap H ^
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+map <A-h> <C-w>h
+map <A-j> <C-w>j
+map <A-k> <C-w>k
+map <A-l> <C-w>l
+cmap <C-p> <Up>
+cmap <C-n> <Down>
+map <A-f> <Action>(SelectInProjectView)
+map <A-z> <Action>(ToggleDistractionFreeMode)
+map <A-x> <Action>(HideAllWindows)
+nmap <S-Left> <Action>(EditorLeftWithSelection)
+nmap <S-Right> <Action>(EditorRightWithSelection)
+nmap <S-Up> <Action>(EditorUpWithSelection)
+nmap <S-Down> <Action>(EditorDownWithSelection)
+imap <S-Left> <Action>(EditorLeftWithSelection)
+imap <S-Right> <Action>(EditorRightWithSelection)
+imap <S-Up> <Action>(EditorUpWithSelection)
+imap <S-Down> <Action>(EditorDownWithSelection)
+vmap <S-Left> <Action>(EditorLeftWithSelection)
+vmap <S-Right> <Action>(EditorRightWithSelection)
+vmap <S-Up> <Action>(EditorUpWithSelection)
+vmap <S-Down> <Action>(EditorDownWithSelection)
+
+" view
+nmap go <Action>(QuickJavaDoc)
+nmap ge <Action>(ShowErrorDescription)
+nmap <Leader>gg <Action>(CodeGlance.toggle)
+
+" tab navigation
+nmap <Leader>1 1gt
+nmap <Leader>2 2gt
+nmap <Leader>3 3gt
+nmap <Leader>4 4gt
+nmap <Leader>5 5gt
+nmap <Leader>6 6gt
+nmap <Leader>7 7gt
+nmap <Leader>8 8gt
+nmap <Leader>9 9gt
+nmap <Leader>0 10gt
 
 " code edit
-nnoremap r :<C-u>action RenameElement<CR>
-nnoremap q :<C-u>action ShowIntentionActions<CR>
-vnoremap q :<C-u>action ShowIntentionActions<CR>
-nnoremap cc :<C-u>action CommentByLineComment<CR>
-vnoremap cc :<C-u>action CommentByLineComment<CR>
-vnoremap p :<C-u>action EditorSelectWord<CR>
-vnoremap n :<C-u>action EditorUnSelectWord<CR>
-nnoremap F :<C-u>action ReformatCode<CR>
-vnoremap F :<C-u>action ReformatCode<CR>
+nmap r <Action>(RenameElement)
+nmap q <Action>(ShowIntentionActions)
+vmap q <Action>(ShowIntentionActions)
+vmap p <Action>(EditorSelectWord)
+vmap n <Action>(EditorUnSelectWord)
+nmap F <Action>(ReformatCode)
+vmap F <Action>(ReformatCode)
+nmap R <Action>(PlantUML.Update)
+vmap R <Action>(PlantUML.Update)
 
-" show information
-nnoremap go :<C-u>action QuickJavaDoc<CR>
-nnoremap <leader>a :<C-u>action Annotate<CR>
-nnoremap <leader>h :<C-u>action Vcs.ShowTabbedFileHistory<CR>
-nnoremap <leader>l :<C-u>action LocalHistory.ShowHistory<CR>
-nnoremap <leader>e :<C-u>action GotoNextError<CR>
-nnoremap <leader>w :<C-u>action GotoPreviousError<CR>
-nnoremap <leader>j :<C-u>action VcsShowNextChangeMarker<CR>
-nnoremap <leader>k :<C-u>action VcsShowPrevChangeMarker<CR>
+" jump code
+nmap gd <Action>(GotoDeclaration)
+nmap gs <Action>(GotoSuperMethod)
+nmap gi <Action>(GotoImplementation)
+nmap gu <Action>(ShowUsages)
+nmap gb <Action>(JumpToLastChange)
+nmap gh <Action>(Back)
+nmap gl <Action>(Forward)
+nmap gN <Action>(MethodDown)
+nmap gn <Action>(MethodUp)
+nmap g] <Action>(GotoNextError)
+nmap g[ <Action>(GotoPreviousError)
+
+" vcs
+nmap ga <Action>(Annotate)
+nmap gv <Action>(Vcs.ShowTabbedFileHistory)
+nmap gL <Action>(LocalHistory.ShowHistory)
+nmap gj <Action>(VcsShowNextChangeMarker)
+nmap gk <Action>(VcsShowPrevChangeMarker)
+nmap gp <Action>(VcsShowCurrentChangeMarker)
+nmap gm <Action>(Vcs.QuickListPopupAction)
 
 " debug
-nnoremap R :<C-u>action ChooseRunConfiguration<CR>
-nnoremap <leader>d :<C-u>action Debug<CR>
-nnoremap <leader>b :<C-u>action ToggleLineBreakpoint<CR>
-nnoremap <leader>t :<C-u>action EvaluateExpression<CR>
-nnoremap <leader>c :<C-u>action Stop<CR>
-nnoremap <C-i> :<C-u>action StepInto<CR>
-nnoremap <C-o> :<C-u>action SmartStepInto<CR>
-nnoremap <C-j> :<C-u>action StepOver<CR>
-nnoremap <C-k> :<C-u>action StepOut<CR>
-nnoremap <C-h> :<C-u>action RunToCursor<CR>
-nnoremap <C-l> :<C-u>action Resume<CR>
+nmap <Leader>d <Action>(Debug)
+nmap <Leader>D <Action>(editRunConfigurations)
+nmap <Leader>c <Action>(Stop)
+nmap <Leader>b <Action>(ToggleLineBreakpoint)
+nmap <Leader>B <Action>(ViewBreakpoints)
+nmap <Leader>p <Action>(ShowExecutionPoint)
+nmap <Leader>i <Action>(StepInto)
+nmap <Leader>I <Action>(SmartStepInto)
+nmap <Leader>j <Action>(StepOver)
+nmap <Leader>J <Action>(ForceStepOver)
+nmap <Leader>k <Action>(StepOut)
+nmap <Leader>h <Action>(RunToCursor)
+nmap <Leader>H <Action>(ForceRunToCursor)
+nmap <Leader>l <Action>(Resume)

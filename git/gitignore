@@ -2,4 +2,7 @@ tags
 .idea
 .DS_Store
 .swp
-.vscode
+node_modules
+makefilex
+go.work
+
