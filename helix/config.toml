@@ -1,0 +1,47 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+mouse = false
+cursorline = true
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "version-control", "file-base-name", "file-modification-indicator"]
+center = ["spinner", "diagnostics"]
+right = ["primary-selection-length", "selections", "file-encoding", "file-line-ending", "position", "position-percentage", "total-line-numbers"]
+
+[editor.file-picker]
+hidden = false
+git-ignore = false
+git-global = false
+git-exclude = false
+ignore = false
+parents =false
+
+[editor.whitespace.render]
+tab = "all"
+space = "none"
+nbsp = "none"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1
+
+[editor.lsp]
+display-messages = true
+
+[keys.insert]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
+
+[keys.normal]
+A-e = ":open ~/.config/helix/config.toml"

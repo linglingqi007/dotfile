@@ -5,9 +5,10 @@ alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.
 alias noproxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY all_proxy'
 
 # tools
-alias lg='lazygit'
+alias lzg='lazygit'
+alias lzd='lazydocker'
 alias ls='exa'
-alias ll='exa -lh'
-alias la='exa -lha'
+alias ll='exa -lh -snew'
+alias la='exa -lha -snew'
 
 # alias ends here
