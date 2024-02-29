@@ -13,21 +13,12 @@ language-servers = ['gopls']
 
 [[language]]
 name = 'toml'
-formatter = { command = 'taplo', args = ['format', '-'] }
+formatter = { command = 'taplo', args = ['format', '-', '-o', 'column_width=160'] }
 auto-format = true
 
 [[language]]
 name = 'sql'
-formatter = { command = 'sqlformat', args = [
-  '--reindent',
-  '--indent_width',
-  '2',
-  '--keywords',
-  'upper',
-  '--identifiers',
-  'lower',
-  '-',
-] }
+formatter = { command = 'sqlformat', args = ['--reindent', '--indent_width', '2', '--keywords', 'upper', '--identifiers', 'lower', '-'] }
 auto-format = true
 
 [[language]]
@@ -50,30 +41,30 @@ name = 'css'
 formatter = { command = 'prettier', args = ['--parser', 'css'] }
 
 [[language]]
-name = 'javascript'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'js'] }
-auto-format = true
-
-[[language]]
 name = 'json'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'json'] }
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'json', '--line-width', '160'] }
 
 [[language]]
 name = 'markdown'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'md'] }
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'md', '--line-width', '160'] }
 auto-format = true
 
 [[language]]
 name = 'typescript'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'ts'] }
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'ts', '--line-width', '160'] }
+auto-format = true
+
+[[language]]
+name = 'javascript'
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'js', '--line-width', '160'] }
 auto-format = true
 
 [[language]]
 name = 'jsx'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'jsx'] }
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'jsx', '--line-width', '160'] }
 auto-format = true
 
 [[language]]
 name = 'tsx'
-formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'tsx'] }
+formatter = { command = 'deno', args = ['fmt', '-', '--ext', 'tsx', '--line-width', '160'] }
 auto-format = true

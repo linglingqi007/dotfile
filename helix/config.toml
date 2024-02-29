@@ -7,6 +7,10 @@ cursorline = true
 color-modes = true
 idle-timeout = 0
 
+[editor.cursor-shape]
+insert = 'bar'
+select = 'underline'
+
 [editor.statusline]
 left = [
   'spinner',
