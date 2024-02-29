@@ -1,15 +1,31 @@
-theme = "gruvbox"
+theme = 'gruvbox'
 
 [editor]
-line-number = "relative"
+line-number = 'relative'
 mouse = false
 cursorline = true
 color-modes = true
+idle-timeout = 0
 
 [editor.statusline]
-left = ["mode", "version-control", "file-base-name", "file-modification-indicator"]
-center = ["spinner", "diagnostics"]
-right = ["primary-selection-length", "selections", "file-encoding", "file-line-ending", "position", "position-percentage", "total-line-numbers"]
+left = [
+  'spinner',
+  'mode',
+  'version-control',
+  'read-only-indicator',
+  'file-modification-indicator',
+]
+center = ['file-base-name', 'workspace-diagnostics']
+right = [
+  'register',
+  'primary-selection-length',
+  'selections',
+  'file-encoding',
+  'file-line-ending',
+  'position',
+  'position-percentage',
+  'total-line-numbers',
+]
 
 [editor.file-picker]
 hidden = false
@@ -17,31 +33,32 @@ git-ignore = false
 git-global = false
 git-exclude = false
 ignore = false
-parents =false
+parents = false
 
 [editor.whitespace.render]
-tab = "all"
-space = "none"
-nbsp = "none"
-newline = "none"
+tab = 'all'
+space = 'none'
+nbsp = 'none'
+newline = 'none'
 
 [editor.indent-guides]
 render = true
-character = "┊"
+character = '┊'
 skip-levels = 1
 
 [editor.lsp]
 display-messages = true
+goto-reference-include-declaration = false
 
 [keys.insert]
-up = "no_op"
-down = "no_op"
-left = "no_op"
-right = "no_op"
-pageup = "no_op"
-pagedown = "no_op"
-home = "no_op"
-end = "no_op"
+up = 'no_op'
+down = 'no_op'
+left = 'no_op'
+right = 'no_op'
+pageup = 'no_op'
+pagedown = 'no_op'
+home = 'no_op'
+end = 'no_op'
 
 [keys.normal]
-A-e = ":open ~/.config/helix/config.toml"
+A-e = ':open ~/.config/helix/config.toml'
