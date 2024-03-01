@@ -1,15 +1,15 @@
 [language-server.gopls.config]
 gofumpt = true
 
-# [language-server.golangci-lint-lsp]
-# command = 'golangci-lint-langserver'
+[language-server.golangci-lint-lsp]
+command = 'golangci-lint-langserver'
 
-# [language-server.golangci-lint-lsp.config]
-# command = ['golangci-lint', 'run', '--out-format', 'json', '--issues-exit-code=1']
+[language-server.golangci-lint-lsp.config]
+command = ['golangci-lint', 'run', '--fast', '--out-format', 'json', '--issues-exit-code=1']
 
 [[language]]
 name = 'go'
-language-servers = ['gopls']
+language-servers = ['gopls', 'golangci-lint-lsp']
 
 [[language]]
 name = 'toml'
