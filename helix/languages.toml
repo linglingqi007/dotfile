@@ -9,7 +9,7 @@ command = ['golangci-lint', 'run', '--fast', '--out-format', 'json', '--issues-e
 
 [[language]]
 name = 'go'
-language-servers = ['gopls', 'golangci-lint-lsp']
+language-servers = ['gopls']
 
 [[language]]
 name = 'toml'
